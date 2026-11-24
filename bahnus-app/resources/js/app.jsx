@@ -10,7 +10,19 @@ function MainApp() {
     );
 }
 
+function AnotherApp() {
+    return (
+        <div>
+            <h2>Hello I'm from another page</h2>
+        </div>
+    );
+}
+
 const container = document.getElementById('app');
+const box = document.getElementById('box');
 if (container) {
     createRoot(container).render(<MainApp />);
+}
+if (box) {
+    createRoot(box).render(<AnotherApp />)
 }
