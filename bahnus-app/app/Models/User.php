@@ -7,11 +7,19 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
+    public function trainings(): BelongsToMany
+    {
+        return $this->belongsToMany(Training::class);
+    }
+
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +28,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'role',
+        'balance',
+        'no_telp',
         'email',
         'password',
     ];
